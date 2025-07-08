@@ -6,10 +6,6 @@ import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.landscapeRight,
-  ]);
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   configureDependencies();
   runApp(const MyApp());
