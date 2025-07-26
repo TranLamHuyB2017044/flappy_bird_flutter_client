@@ -15,6 +15,7 @@ class AppAssets {
   static const String message = '${_path}message.png';
 
   static const String pipeGreen = 'pipe-green.png';
+  static const String pipeRotate = 'pipe_rotated.png';
   static const String pipeRed = 'pipe-red.png';
 
   static const String redbirdDownFlap = 'redbird-downflap.png';
