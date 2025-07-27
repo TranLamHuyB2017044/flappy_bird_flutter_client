@@ -13,6 +13,8 @@ class AppAssets {
   static const String gameOver = '${_path}gameover.png';
   static const String imgBird = '${_path}img_bird.png';
   static const String message = '${_path}message.png';
+  static const String menu = '${_path}menu.jpg';
+
 
   static const String pipeGreen = 'pipe-green.png';
   static const String pipeRotate = 'pipe_rotated.png';

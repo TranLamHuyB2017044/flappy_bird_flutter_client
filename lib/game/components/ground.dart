@@ -1,3 +1,4 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/parallax.dart';
@@ -17,6 +18,11 @@ class Ground extends ParallaxComponent<FlappyGame> {
       [
         ParallaxLayer(ParallaxImage(ground, fill: LayerFill.none)),
       ],
+    );
+    add(
+      RectangleHitbox(
+        position: Vector2(0, game.size.y - AppConfig.groundHeight),
+      ),
     );
   }
 

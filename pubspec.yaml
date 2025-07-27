@@ -37,6 +37,10 @@ flutter:
   assets:
     - assets/images/
     - assets/audios/
+  fonts:
+    - family: GameFont
+      fonts:
+        - asset: assets/fonts/game_font.ttf
 
 
   uses-material-design: true
