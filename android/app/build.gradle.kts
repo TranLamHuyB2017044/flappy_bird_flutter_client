@@ -7,8 +7,10 @@ plugins {
 
 android {
     namespace = "com.example.flappy_bird_flutter_client"
+
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.0.12077973"
+//    ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

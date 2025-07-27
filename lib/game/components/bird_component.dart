@@ -1,6 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flappy_bird_flutter_client/common/app_assets.dart';
 import 'package:flappy_bird_flutter_client/core/config/app_config.dart';
 import 'package:flappy_bird_flutter_client/core/enums/bird_enum.dart';
@@ -44,6 +45,7 @@ class BirdComponent extends SpriteGroupComponent<BirdMovement>
   }
 
   void fly() {
+    FlameAudio.play(AppAssets.flyingAudio);
     add(
       MoveByEffect(
         Vector2(0, AppConfig.gravity),
@@ -69,9 +71,10 @@ class BirdComponent extends SpriteGroupComponent<BirdMovement>
   }
 
   void gameOver() {
-    // FlameAudio.play(Assets.collision);
+    FlameAudio.play(AppAssets.collisionAudio);
     game.isHit = true;
     game.overlays.add(AppConfig.gameOverPage);
     game.pauseEngine();
+    FlameAudio.audioCache.clearAll();
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
+import 'package:flame_audio/flame_audio.dart';
+import 'package:flappy_bird_flutter_client/common/app_assets.dart';
 import 'package:flappy_bird_flutter_client/presentation/bloc/game_bloc.dart';
 import 'package:flappy_bird_flutter_client/presentation/pages/game_over_page.dart';
 import 'package:flappy_bird_flutter_client/presentation/pages/home_page.dart';
@@ -9,13 +11,18 @@ import 'core/di/injection.dart';
 import 'game/flappy_game.dart';
 import 'package:flutter/services.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
   );
   await Flame.device.fullScreen();
+  await FlameAudio.audioCache.loadAll([
+    AppAssets.collisionAudio,
+    AppAssets.flyingAudio,
+    AppAssets.pointAudio,
+  ]);
   runApp(const MyApp());
 }
 

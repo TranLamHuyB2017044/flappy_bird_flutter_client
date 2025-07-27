@@ -19,9 +19,9 @@ class FlappyGame extends FlameGame with TapDetector, HasCollisionDetection {
   Future<void> onLoad() async {
     await addAll([
       Background(),
+      score = buildScore(),
       Ground(),
       bird = BirdComponent(),
-      score = buildScore(),
     ]);
     interval = Timer(AppConfig.pipeInterval, repeat: true);
     interval.onTick = () => add(PipeGroup());
@@ -32,7 +32,11 @@ class FlappyGame extends FlameGame with TapDetector, HasCollisionDetection {
       position: Vector2(size.x / 2, size.y / 2 * 0.2),
       anchor: Anchor.center,
       textRenderer: TextPaint(
-        style: const TextStyle(fontSize: 40, fontFamily: 'GameFont', fontWeight: FontWeight.bold),
+        style: const TextStyle(
+          fontSize: 40,
+          fontFamily: 'GameFont',
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
