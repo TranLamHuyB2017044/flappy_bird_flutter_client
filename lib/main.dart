@@ -13,16 +13,12 @@ import 'package:flutter/services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies();
+  await configureDependencies();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
   );
   await Flame.device.fullScreen();
-  await FlameAudio.audioCache.loadAll([
-    AppAssets.collisionAudio,
-    AppAssets.flyingAudio,
-    AppAssets.pointAudio,
-  ]);
+
   runApp(const MyApp());
 }
 

@@ -9,10 +9,14 @@ import 'package:flappy_bird_flutter_client/game/flappy_game.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../core/di/injection.dart';
+
 class BirdComponent extends SpriteGroupComponent<BirdMovement>
     with HasGameReference<FlappyGame>, CollisionCallbacks {
   BirdComponent();
   int score = 0;
+  final flyingPool = getIt<AudioPool>();
+
   @override
   Future<void> onLoad() async {
     size = Vector2(50, 40);
@@ -45,7 +49,6 @@ class BirdComponent extends SpriteGroupComponent<BirdMovement>
   }
 
   void fly() {
-    FlameAudio.play(AppAssets.flyingAudio);
     add(
       MoveByEffect(
         Vector2(0, AppConfig.gravity),
@@ -53,6 +56,7 @@ class BirdComponent extends SpriteGroupComponent<BirdMovement>
         onComplete: () => current = BirdMovement.down,
       ),
     );
+    flyingPool.start();
     current = BirdMovement.up;
   }
 
@@ -75,6 +79,5 @@ class BirdComponent extends SpriteGroupComponent<BirdMovement>
     game.isHit = true;
     game.overlays.add(AppConfig.gameOverPage);
     game.pauseEngine();
-    FlameAudio.audioCache.clearAll();
   }
 }

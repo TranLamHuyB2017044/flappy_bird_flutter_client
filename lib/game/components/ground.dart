@@ -22,6 +22,7 @@ class Ground extends ParallaxComponent<FlappyGame> {
     add(
       RectangleHitbox(
         position: Vector2(0, game.size.y - AppConfig.groundHeight),
+        size: Vector2(game.size.x, AppConfig.groundHeight),
       ),
     );
   }

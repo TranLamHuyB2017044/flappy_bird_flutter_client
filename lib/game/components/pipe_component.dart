@@ -29,9 +29,4 @@ class PipeComponent extends SpriteComponent with HasGameReference<FlappyGame> {
     }
     add(RectangleHitbox());
   }
-
-  @override
-  void update(double dt) {
-    super.update(dt);
-  }
 }

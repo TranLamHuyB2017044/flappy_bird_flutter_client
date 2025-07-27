@@ -16,9 +16,9 @@ class GameOverPage extends StatelessWidget {
   Widget build(BuildContext context) {
     void onRestart() {
       context.read<GameBloc>().add(const GameEvent.reset());
+      game.bird.reset();
       game.overlays.remove(AppConfig.gameOverPage);
       game.resumeEngine();
-      game.bird.reset();
     }
 
     return BlocBuilder<GameBloc, GameState>(
