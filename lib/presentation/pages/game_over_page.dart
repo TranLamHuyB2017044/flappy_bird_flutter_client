@@ -14,6 +14,13 @@ class GameOverPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void onRestart() {
+      context.read<GameBloc>().add(const GameEvent.reset());
+      game.overlays.remove(AppConfig.gameOverPage);
+      game.resumeEngine();
+      game.bird.reset();
+    }
+
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
         return Material(
@@ -24,16 +31,12 @@ class GameOverPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Score: 0',
+                  'Score ${game.bird.score}',
                   style: const TextStyle(fontSize: 60, color: Colors.white),
                 ),
                 Image.asset(AppAssets.gameOver),
                 ElevatedButton(
-                  onPressed: () {
-                    context.read<GameBloc>().add(const GameEvent.reset());
-                    game.overlays.remove(AppConfig.gameOverPage);
-                    game.resumeEngine();
-                  },
+                  onPressed: onRestart,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.appButtonColor,
                   ),

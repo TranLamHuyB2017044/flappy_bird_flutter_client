@@ -32,9 +32,23 @@ class PipeGroup extends PositionComponent with HasGameReference<FlappyGame> {
     await super.onLoad();
   }
 
+  void updateScore() {
+    game.bird.score += 1;
+    // FlameAudio.play(Assets.point);
+  }
+
   @override
   void update(double dt) {
     super.update(dt);
     position.x -= AppConfig.gameSpeed * dt;
+    if (position.x < -10) {
+      removeFromParent();
+      updateScore();
+    }
+
+    if (game.isHit) {
+      removeFromParent();
+      game.isHit = false;
+    }
   }
 }
