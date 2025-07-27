@@ -18,7 +18,8 @@ class PipeGroup extends PositionComponent with HasGameReference<FlappyGame> {
   Future<void> onLoad() async {
     position.x = game.size.x;
     final heightMinusGround = game.size.y - AppConfig.groundHeight;
-    final spacing = 100 + _random.nextDouble() * (heightMinusGround / 4);
+    final minSpacing = 110;
+    final spacing = minSpacing + _random.nextDouble() * (heightMinusGround / 4);
     final centerY =
         spacing + _random.nextDouble() * (heightMinusGround - spacing);
     addAll([
